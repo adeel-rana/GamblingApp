@@ -1,23 +1,17 @@
-﻿using Bet.Domain.Models;
-using Bet.Infrastructure.Context;
-using System.Threading.Tasks;
-
-namespace Bet.Infrastructure.Repository
+﻿namespace Bet.Infrastructure.Repository;
+public class TransactionRepository : ITransactionRepository
 {
-    public class TransactionRepository : ITransactionRepository
+    private readonly BettingContext _context;
+
+    public TransactionRepository(BettingContext context)
     {
-        private readonly BettingContext _context;
+        _context = context;
+    }
 
-        public TransactionRepository(BettingContext context)
-        {
-            _context = context;
-        }
-
-        public async Task<Transaction> CreateAsync(Transaction entity)
-        {
-            _context.Set<Transaction>().Add(entity);
-            await _context.SaveChangesAsync();
-            return entity;
-        }
+    public async Task<Transaction> CreateAsync(Transaction entity)
+    {
+        _context.Set<Transaction>().Add(entity);
+        await _context.SaveChangesAsync();
+        return entity;
     }
 }

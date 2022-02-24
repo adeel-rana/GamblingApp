@@ -1,0 +1,10 @@
+﻿global using Bet.Domain.Models.Entities;
+global using Bet.Infrastructure.Models;
+global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore;
+global using System.Threading;
+global using System.Threading.Tasks;
+global using Microsoft.AspNetCore.Identity;
+global using Bet.Infrastructure.Context;
+global using System.Collections.Generic;
+global using System.Linq;

@@ -1,8 +1,5 @@
-﻿using Bet.Domain.Models;
-namespace Bet.Domain.Service
+﻿namespace Bet.Domain.Service;
+public interface IBettingService
 {
-    public interface IBettingService
-    {
-        BetResponse GetBetResponse(BetRequest request);
-    }
+    BetResponse GetBettingResponse(BetRequest request);
 }

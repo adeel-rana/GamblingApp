@@ -1,12 +1,7 @@
-﻿using Bet.Domain.Models;
-using Microsoft.EntityFrameworkCore;
-
-namespace Bet.Infrastructure.Context
+﻿namespace Bet.Infrastructure.Context;
+public interface IBettingContext
 {
-    public interface IBettingContext
-    {
-        DbSet<Transaction> Transactions { get; }
-        DbSet<BettingHistory> BettingHistory { get; }
-        
-    }
+    DbSet<Transaction> Transactions { get; }
+    DbSet<BettingHistory> BettingHistory { get; }
+    Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }

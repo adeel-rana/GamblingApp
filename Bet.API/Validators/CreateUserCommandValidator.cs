@@ -1,15 +1,10 @@
-﻿using FluentValidation;
-using Bet.API.Application.Commands;
-
-namespace Bet.API.Validators
+﻿namespace Bet.API.Validators;
+public class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
 {
-    public class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
+    public CreateUserCommandValidator()
     {
-        public CreateUserCommandValidator()
-        {
-            RuleFor(x => x.UserName).NotEmpty().WithMessage("User name is required");
-            RuleFor(x => x.Email).EmailAddress().NotEmpty().WithMessage("Email is required");
-            RuleFor(x => x.Password).NotEmpty().WithMessage("Password is required");
-        } 
+        RuleFor(x => x.UserName).NotEmpty().WithMessage("User name is required");
+        RuleFor(x => x.Email).EmailAddress().NotEmpty().WithMessage("Email is required");
+        RuleFor(x => x.Password).NotEmpty().WithMessage("Password is required");
     }
 }

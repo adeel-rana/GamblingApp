@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-
-namespace Bet.Infrastructure.Models
+﻿namespace Bet.Infrastructure.Models;
+public class ApplicationUser : IdentityUser
 {
-    public class ApplicationUser : IdentityUser
-    {
-    }
 }

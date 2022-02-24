@@ -1,14 +1,9 @@
-﻿using FluentValidation;
-using Bet.Domain.Models;
-
-namespace Bet.API.Validators
+﻿namespace Bet.API.Validators;
+public class LoginModelValidator : AbstractValidator<LoginModel>
 {
-    public class LoginModelValidator: AbstractValidator<LoginModel>
+    public LoginModelValidator()
     {
-        public LoginModelValidator()
-        {
-            RuleFor(x => x.Username).NotEmpty().WithMessage("User name is required");
-            RuleFor(x => x.Password).NotEmpty().WithMessage("Password is required");
-        }
+        RuleFor(x => x.Username).NotEmpty().WithMessage("User name is required");
+        RuleFor(x => x.Password).NotEmpty().WithMessage("Password is required");
     }
 }

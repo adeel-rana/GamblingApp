@@ -1,8 +1,8 @@
 # Gambling App 
 
-Following technologies are used to perform the test.
+Following technologies are used to develop the application.
 
-* API Backend: C# .NET5 
+* API Backend: C# 10.0 / .NET6 
 * Design Pattern: Command Query Responsibility Segregation (CQRS), MVC
 * API Documentation: Swagger
 * Storage: In Memory & SQL Server

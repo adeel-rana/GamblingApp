@@ -18,19 +18,23 @@ steps:
   displayName: 'dotnet build $(buildConfiguration)'
   
 - task: DotNetCoreCLI@2
+  displayName: Restore
   inputs:
     command: 'restore'
     feedsToUse: 'select'
     vstsFeed: 'bf73f344-e1e9-4eaa-9b31-49d3e8193236'
 - task: DotNetCoreCLI@2
+  displayName: Build
   inputs:
     command: 'build'
 - task: DotNetCoreCLI@2
+  displayName: Unit Test
   inputs:
     command: 'test'
     publishTestResults: false
     testRunTitle: 'Unit Test'
 - task: DotNetCoreCLI@2
+  displayName: Publish
   inputs:
     command: 'publish'
     publishWebProjects: true

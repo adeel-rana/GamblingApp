@@ -12,27 +12,25 @@ pool:
 variables:
   buildConfiguration: 'Release'
 
+
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
   
-- task: VSTest@2
+- task: DotNetCoreCLI@2
   inputs:
-    testSelector: 'testAssemblies'
-    testAssemblyVer2: |
-      **\*test*.dll
-      !**\*TestAdapter.dll
-      !**\obj\**
-    searchFolder: '$(System.DefaultWorkingDirectory)'
-    runInParallel: true
-    codeCoverageEnabled: false
-- task: VSTest@2
+    command: 'restore'
+    feedsToUse: 'select'
+    vstsFeed: 'bf73f344-e1e9-4eaa-9b31-49d3e8193236'
+- task: DotNetCoreCLI@2
   inputs:
-    testSelector: 'testAssemblies'
-    testAssemblyVer2: |
-      **\*test*.dll
-      !**\*TestAdapter.dll
-      !**\obj\**
-    searchFolder: '$(System.DefaultWorkingDirectory)'
-    runInParallel: true
-    codeCoverageEnabled: false
+    command: 'build'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    publishTestResults: false
+    testRunTitle: 'Unit Test'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: true

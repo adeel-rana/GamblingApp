@@ -1,3 +1,5 @@
+using System.Text.Json;
+
 namespace Bet.API;
 public class Startup
 {
@@ -47,13 +49,16 @@ public class Startup
                 ValidAudience = Configuration["Auth:JwtBearer:Audience"],
             };
         });
-
+        JsonSerializerOptions options = new()
+        {
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
         services.AddControllers()
              .AddJsonOptions(
                  options =>
                  {
                      options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-                     options.JsonSerializerOptions.IgnoreNullValues = true;
+                     options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
                  })
              .AddFluentValidation(
                  fv =>
